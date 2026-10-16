@@ -57,8 +57,9 @@ public class EventsController(
 
         if (!string.IsNullOrWhiteSpace(location))
         {
-            var term = location.Trim();
-            query = query.Where(e => e.Location.Contains(term));
+            // LIKE is case-insensitive on SQL Server and on SQLite, so the filter behaves the same in both.
+            var pattern = $"%{location.Trim()}%";
+            query = query.Where(e => EF.Functions.Like(e.Location, pattern));
         }
 
         var events = await query
