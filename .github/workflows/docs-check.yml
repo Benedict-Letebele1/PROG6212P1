@@ -1,0 +1,34 @@
+name: Planning document check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  check-planning-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Check the required files exist
+        run: |
+          for file in README.md docs/erd.png docs/endpoint-plan.pdf docs/RaceDay-Schema.sql; do
+            if [ ! -f "$file" ]; then
+              echo "Missing required file: $file"
+              exit 1
+            fi
+          done
+          echo "All required planning files are present."
+
+      - name: Check the SQL script creates all seven tables
+        run: |
+          tables=$(grep -ci '^CREATE TABLE' docs/RaceDay-Schema.sql)
+          echo "CREATE TABLE statements found: $tables"
+          if [ "$tables" -ne 7 ]; then
+            echo "Expected 7 CREATE TABLE statements, found $tables"
+            exit 1
+          fi
