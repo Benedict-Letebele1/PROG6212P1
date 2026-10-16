@@ -1,0 +1,8 @@
+# Keep text files on LF so the CI check and the SQL script behave the same on every machine
+* text=auto eol=lf
+
+# Images and PDFs are binary and must not be line-ending converted
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
