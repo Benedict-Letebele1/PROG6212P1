@@ -21,6 +21,7 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddScoped<IBannerStorage, LocalBannerStorage>();
+builder.Services.AddScoped<OrganiserAccess>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
