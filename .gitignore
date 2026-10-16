@@ -1,0 +1,16 @@
+# Build output
+bin/
+obj/
+TestResults/
+publish/
+
+# Visual Studio user files
+.vs/
+*.user
+*.suo
+
+# Uploaded banner images are created at runtime, not committed
+RaceDayApi/wwwroot/uploads/
+
+# Local secrets
+appsettings.Local.json
