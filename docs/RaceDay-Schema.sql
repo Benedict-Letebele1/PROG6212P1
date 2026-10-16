@@ -90,12 +90,12 @@ GO
 -- SEED DATA 
 -- Users
 INSERT INTO Users (Email, PasswordHash, FullName, Role) VALUES
-('events@joburgrunning.co.za', 'hash_joburg_2026', 'David Mokoena', 'Organiser'),
-('info@capetowncycling.com', 'hash_ct_2026', 'Michelle Williams', 'Organiser'),
-('thomas.n@email.com', 'hash_thomas_123', 'Thomas Nkosi', 'Participant'),
-('priya.s@email.com', 'hash_priya_456', 'Priya Singh', 'Participant'),
-('kyle.b@email.com', 'hash_kyle_789', 'Kyle Botha', 'Participant'),
-('zanele.m@email.com', 'hash_zanele_101', 'Zanele Mthembu', 'Participant');
+('events@joburgrunning.co.za', '$2a$11$rsRYYKaDzIrDahYDXoQ/1OvABj8Nn1zvq8mWpmnhxSMPqYm694x8y', 'David Mokoena', 'Organiser'),
+('info@capetowncycling.com', '$2a$11$Cd5Ae7KscN99szm8rlbaVuS04c8BFtNXBu5wdnXLYB7Rh2FMreTV2', 'Michelle Williams', 'Organiser'),
+('thomas.n@email.com', '$2a$11$b7CYJhU99wRwgiSTKZDJgeK5e88yo7ezeJSwlK0YFCbyvSXhQj5SG', 'Thomas Nkosi', 'Participant'),
+('priya.s@email.com', '$2a$11$Nx9nhL1/qCvEvPvoNhzKaOjAdE1a7hbiLmXTgsqQ1nrsri52lDII2', 'Priya Singh', 'Participant'),
+('kyle.b@email.com', '$2a$11$oIobZJYvUyYYmCc78fXojuhvR1qPf1XI08TniQzprKbMI38ZCyQvG', 'Kyle Botha', 'Participant'),
+('zanele.m@email.com', '$2a$11$bVwLMksJCge73nE7ZdcXX.V4THRstOOz7F49XCG6kHrutNmcYBBQm', 'Zanele Mthembu', 'Participant');
 
 -- Organisers
 INSERT INTO Organisers (UserID, OrganisationName, ContactNumber) VALUES
@@ -136,11 +136,11 @@ INSERT INTO Categories (EventID, Name, Description, MinAge, MaxAge) VALUES
 INSERT INTO Enrolments (ParticipantID, EventID, CategoryID, Status) VALUES
 (1, 1, 2, 'Confirmed'),
 (1, 2, 6, 'Confirmed'),
-(2, 3, 9, 'Pending'),
-(2, 1, 3, 'Confirmed'),
+(2, 3, 10, 'Pending'),
+(2, 1, 2, 'Confirmed'),
 (3, 1, 2, 'Confirmed'),
 (3, 4, 12, 'Pending'),
-(4, 2, 7, 'Confirmed'),
+(4, 2, 6, 'Confirmed'),
 (4, 3, 10, 'Confirmed');
 
 -- Results
