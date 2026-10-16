@@ -7,8 +7,8 @@ public class LocalBannerStorage(IWebHostEnvironment environment) : IBannerStorag
 {
     public async Task<string> SaveAsync(IFormFile file, CancellationToken cancellationToken)
     {
-        var webRoot = environment.WebRootPath ?? Path.Combine(environment.ContentRootPath, "wwwroot");
-        var folder = Path.Combine(webRoot, "uploads", "banners");
+        // Same folder that Program.cs serves at /uploads/banners.
+        var folder = Path.Combine(environment.ContentRootPath, "wwwroot", "uploads", "banners");
 
         // The folder is created on first use, so a fresh clone runs without a wwwroot folder.
         Directory.CreateDirectory(folder);

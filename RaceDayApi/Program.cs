@@ -1,5 +1,6 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi;
 using RaceDayApi.Data;
 using RaceDayApi.Services;
@@ -55,7 +56,16 @@ if (app.Configuration.GetValue("Database:ApplyMigrationsOnStartup", true))
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseStaticFiles();
+// Banners are served from their own folder. The upload folder is git-ignored, so a fresh clone may not have it yet.
+// I create it here and point the file provider at it, so it works whether or not it existed at startup.
+var bannerFolder = Path.Combine(app.Environment.ContentRootPath, "wwwroot", "uploads", "banners");
+Directory.CreateDirectory(bannerFolder);
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(bannerFolder),
+    RequestPath = "/uploads/banners"
+});
+
 app.UseSession();
 
 app.MapControllers();

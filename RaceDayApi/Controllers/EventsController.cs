@@ -225,7 +225,7 @@ public class EventsController(
     [ProducesResponseType<ErrorResponse>(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ErrorResponse>(StatusCodes.Status403Forbidden)]
     [ProducesResponseType<ErrorResponse>(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> UploadBanner(int eventId, [FromForm] IFormFile file, CancellationToken cancellationToken)
+    public async Task<IActionResult> UploadBanner(int eventId, IFormFile file, CancellationToken cancellationToken)
     {
         var raceEvent = await access.FindEventAsync(eventId, cancellationToken);
         if (raceEvent is null)
